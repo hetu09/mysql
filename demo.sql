@@ -205,4 +205,4 @@ FROM `employee`
 WHERE emp_gender = 'female'
 GROUP BY emp_address
 HAVING total_emp >= 1
-ORDER BY emp_address asc
+

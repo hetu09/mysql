@@ -12,7 +12,6 @@ CREATE TABLE `stud_reg_tbl`(
     `stud_id` INT NOT NULL AUTO_INCREMENT,
     `stud_fname` VARCHAR(50) NOT NULL,
     `stud_lname` VARCHAR(50) NOT NULL,
-    `stud_surname` VARCHAR(50) NOT NULL,
     `stud_address` VARCHAR(255) NOT NULL,
     `gender` SET('female','male') NOT NULL DEFAULT 'female',
     `city` SET('surat','mumbai','baroda','bardoli','ahmedabad') NOT NULL DEFAULT 'surat ',
@@ -28,3 +27,12 @@ CREATE TABLE `stud_reg_tbl`(
 );
 
 -- insert
+-- 1.default 
+-- 2.custome
+-- 3.multi insert
+
+-- 1.default insert syntax:..
+insert into stud_reg_tbl values(NULL,'ahana','ambani','bombay','female','mumbai','maharashtra','maharashtra',385001,'bca','ahana@gmail.com','2019-03-02','9856456345',CURRENT_TIMESTAMP);
+
+-- drop field
+ALTER TABLE `stud_reg_tbl` DROP `stud_surname`
