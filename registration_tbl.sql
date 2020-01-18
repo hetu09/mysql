@@ -27,3 +27,4 @@ CREATE TABLE `stud_reg_tbl`(
     PRIMARY KEY(stud_id) 
 );
 
+-- insert
