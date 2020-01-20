@@ -84,6 +84,9 @@ from stud_reg_tbl as s
 
 -- 2.column aliasing
 
+select s.stud_fname as 'student_fname', s.stud_email as student_mail
+from stud_reg_tbl as s;
+
 
 
 -- drop field
