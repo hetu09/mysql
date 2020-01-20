@@ -69,8 +69,22 @@ select * from stud_reg_tbl;
 
 -- select custom
 
-select stud_fname,stud_email,gender from stud_reg_tbl;
+select stud_fname,stud_email,gender 
+from stud_reg_tbl;
 
--- 
+-- as keyword alias-->sacondary name of field[rename a column or table with an alias.]
+
+-- 1.table aliasing
+-- 2.column aliasing
+
+-- 1.table aliasing
+
+select s.stud_fname,s.stud_email,s.gender 
+from stud_reg_tbl as s
+
+-- 2.column aliasing
+
+
+
 -- drop field
 ALTER TABLE `stud_reg_tbl` DROP `stud_surname`
