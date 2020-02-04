@@ -1,0 +1,42 @@
+SELECT * FROM `employee` WHERE emp_id IN (1,6,7);
+
+
+SELECT * 
+FROM `employee`
+WHERE emp_salary BETWEEN 1000 AND 5000;
+
+
+SELECT * 
+FROM `employee`
+WHERE emp_name IS NULL;
+
+
+SELECT * 
+FROM `employee`
+WHERE emp_name IS NOT NULL;
+
+-- start from s
+-- pattern
+SELECT * 
+FROM employee
+WHERE emp_name LIKE 's%';
+
+
+-- end from a
+SELECT * 
+FROM employee
+WHERE emp_name LIKE '%a';
+
+
+SELECT * 
+FROM employee
+WHERE emp_name LIKE 'z_r_';
+
+SELECT * 
+FROM employee
+WHERE emp_name LIKE 's_m%';
+
+
+SELECT * 
+FROM employee
+WHERE emp_name LIKE '%s%';
