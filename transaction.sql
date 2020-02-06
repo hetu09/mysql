@@ -19,3 +19,8 @@ create table `transaction`(
     `modified_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY  (transaction_id)
     );
+
+    SELECT COUNT(*) FROM transaction WHERE transaction_type = 'cr'
+
+    SELECT * FROM `transaction` WHERE transaction_ac_holder_name = 'ahan' and gender = 'male'
+
