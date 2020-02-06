@@ -166,7 +166,9 @@ SELECT *
 FROM `employee`
 ORDER BY emp_name DESC;
 
-
+SELECT * 
+FROM `employee`
+ORDER BY emp_name DESC,emp_gender asc;
 -------
 --AGGREGATE :
 -- int,float,double...
@@ -175,7 +177,7 @@ ORDER BY emp_name DESC;
 -- avg
 -- sum
 
---- col where clause not use
+--- col
 -- count
 
 ---
@@ -183,13 +185,21 @@ ORDER BY emp_name DESC;
 -- group by
 ----
 
-SELECT count(*) as 'total_emp' FROM `employee` WHERE emp_name = 'sumit'
+SELECT count(*) as 'total_emp' 
+FROM `employee` 
+WHERE emp_name = 'sumit'
 
 
 SELECT emp_name,count(*) as 'total_emp' 
 FROM `employee`
 GROUP BY emp_name
 having  total_emp >= 1;
+
+
+SELECT emp_address,count(*) as 'total_emp' 
+FROM `employee`
+GROUP BY emp_address
+having  total_emp >= 2;
 
 
 SELECT emp_name,count(*) as 'total_emp' 
@@ -205,4 +215,117 @@ FROM `employee`
 WHERE emp_gender = 'female'
 GROUP BY emp_address
 HAVING total_emp >= 1
+ORDER BY emp_address asc;
 
+
+SELECT emp_address,count(*) as 'total_emp' 
+FROM `employee`
+WHERE emp_gender = 'female'
+GROUP BY emp_address
+HAVING total_emp >= 1
+ORDER BY total_emp desc,emp_address asc;
+
+
+SELECT max(emp_salary) as 'max_sal' 
+FROM `employee`;
+
+
+SELECT min(emp_salary) as 'min_sal' 
+FROM `employee`;
+
+
+SELECT avg(emp_salary) as 'avg_sal' 
+FROM `employee`;
+
+
+
+SELECT emp_address , avg(emp_salary) as 'AVG_SAL'
+FROM employee
+GROUP BY emp_address
+HAVING avg_sal > 5000;
+
+
+SELECT emp_address , avg(emp_salary) as 'AVG_SAL'
+FROM employee
+WHERE emp_gender = 'female'
+GROUP BY emp_address
+HAVING avg_sal > 5000
+ORDER by emp_address;
+
+SELECT emp_name , max(emp_salary) as 'MAX_SAL'
+FROM employee
+WHERE emp_gender = 'female'
+GROUP BY emp_salary,emp_name
+ORDER by emp_name;
+
+
+SELECT emp_address,sum(emp_salary) as 'total_salary' 
+FROM `employee`
+WHERE emp_gender = 'female'
+GROUP BY emp_address
+ORDER BY emp_address asc
+
+
+
+------- sql filters ---------
+
+SELECT * FROM `employee` WHERE emp_id IN (1,6,7);
+
+
+SELECT * 
+FROM `employee`
+WHERE emp_salary BETWEEN 1000 AND 5000;
+
+
+SELECT * 
+FROM `employee`
+WHERE emp_name IS NULL;
+
+
+SELECT * 
+FROM `employee`
+WHERE emp_name IS NOT NULL;
+
+-- start from s
+-- pattern
+SELECT * 
+FROM employee
+WHERE emp_name LIKE 's%';
+
+
+-- end from a
+SELECT * 
+FROM employee
+WHERE emp_name LIKE '%a';
+
+
+SELECT * 
+FROM employee
+WHERE emp_name LIKE 'z_r_';
+
+SELECT * 
+FROM employee
+WHERE emp_name LIKE 's_m%';
+
+
+SELECT * 
+FROM employee
+WHERE emp_name LIKE '%s%';
+
+
+/*
+Regular Expression
+regex
+pattern matching
+wildcard -> []
+0-9 -> range
+a-z -> 
+A-Z
+
+{1} -> length
+{1,} -> 1 min and more length
+*/
+
+SELECT * FROM `contact_detail` WHERE contact rlike '[+91]-[6-9]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}'
+SELECT * FROM `contact_detail` WHERE contact rlike '[+1]-[1-5]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}'
+SELECT * FROM `contact_detail` WHERE email RLIKE '[a-zA-Z]{1,}[@][a-zA-Z]{1,6}[.][a-zA-Z]{2,3}'
