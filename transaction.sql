@@ -20,7 +20,11 @@ create table `transaction`(
     PRIMARY KEY  (transaction_id)
     );
 
+   -- count credit transaction type
+
     SELECT COUNT(*) FROM transaction WHERE transaction_type = 'cr'
+
+    -- find account holder name is ahan and gender is male from transaction table 
 
     SELECT * FROM `transaction` WHERE transaction_ac_holder_name = 'ahan' and gender = 'male'
 
