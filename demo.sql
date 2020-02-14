@@ -329,3 +329,47 @@ A-Z
 SELECT * FROM `contact_detail` WHERE contact rlike '[+91]-[6-9]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}'
 SELECT * FROM `contact_detail` WHERE contact rlike '[+1]-[1-5]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}'
 SELECT * FROM `contact_detail` WHERE email RLIKE '[a-zA-Z]{1,}[@][a-zA-Z]{1,6}[.][a-zA-Z]{2,3}'
+
+-- join
+
+-- inner join[Returns records that have matching values in both tables]
+
+SELECT e.id as 'ID', e.name as 'Employee', dpt.name as 'Department',des.name as 'Designaton'
+FROM tbl_employee as e
+INNER JOIN tbl_desg as des ON des.id = e.desg_id
+INNER JOIN tbl_dept as dpt ON dpt.id = e.dept_id
+
+
+
+SELECT e.id as 'ID', e.name as 'Employee', dpt.name as 'Department',des.name as 'Designaton'
+FROM tbl_employee as e
+LEFT JOIN tbl_desg as des ON des.id = e.desg_id
+LEFT JOIN tbl_dept as dpt ON dpt.id = e.dept_id
+
+
+SELECT e.id as 'ID', e.name as 'Employee', des.name as 'Designaton'
+FROM tbl_employee as e
+RIGHT JOIN tbl_desg as des ON des.id = e.desg_id
+
+
+SELECT e.id as 'ID', e.name as 'Employee', dpt.name as 'Department'
+FROM tbl_employee as e
+RIGHT JOIN tbl_dept as dpt ON dpt.id = e.dept_id
+
+
+SELECT IFNULL(e.id,'-') as 'ID', IFNULL(e.name,'-') as 'Employee', dpt.name as 'Department'
+FROM tbl_employee as e
+RIGHT JOIN tbl_dept as dpt ON dpt.id = e.dept_id
+
+
+SELECT id, name, salary , IF(tbl_employee.status = 'active','WORKING','LEFT' ) as 'Status' FROM `tbl_employee` 
+
+
+
+SELECT id,name,salary,
+  CASE
+    WHEN tbl_employee.status = 'active' THEN "ACTIVE NOW"
+    WHEN tbl_employee.status = 'disabled' THEN "LEFT COMPANY"
+    ELSE "NO CURRENT STATUS"
+  END as 'Status'
+ FROM tbl_employee

@@ -89,5 +89,6 @@ from stud_reg_tbl as s;
 
 
 
+
 -- drop field
 ALTER TABLE `stud_reg_tbl` DROP `stud_surname`
